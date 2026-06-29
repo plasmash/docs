@@ -69,12 +69,12 @@ Options:
 Remove package dependencies:
 
 ```bash
-plasmactl model:remove --packages plasma-legacy
-plasmactl model:remove --packages pkg1 --packages pkg2
+plasmactl model:remove plasma-legacy
+plasmactl model:remove pkg1 pkg2
 ```
 
-Options:
-- `--packages`: Package names to delete (can be specified multiple times)
+Arguments:
+- `packages`: One or more package names to remove (positional)
 
 ### model:prepare
 
