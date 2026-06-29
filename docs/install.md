@@ -17,7 +17,7 @@
 
 === "Windows"
 
-    Download the latest `plasmactl_Windows_*.exe` from the
+    Download the latest `plasmactl_windows_amd64.exe` (or `_arm64`) from the
     [releases page](https://github.com/plasmash/plasmactl/releases) and add it to your `PATH`.
 
 The installer detects your OS and architecture and downloads the matching binary from the latest [GitHub release](https://github.com/plasmash/plasmactl/releases).
@@ -25,7 +25,7 @@ The installer detects your OS and architecture and downloads the matching binary
 ## Quickstart
 
 ```sh
-# 1. Create a platform with the interactive wizard
+# 1. Scaffold a new platform (platform.yaml + nodes/)
 plasmactl platform:create my-platform
 
 # 2. Bring it up on your infrastructure

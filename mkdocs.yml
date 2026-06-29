@@ -41,6 +41,7 @@ nav:
       - platform: cli/platform.md
       - node: cli/node.md
       - topology: cli/topology.md
+      - auth: cli/auth.md
       - processors: cli/processors.md
   - Deployment: deployment.md
 

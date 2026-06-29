@@ -265,4 +265,4 @@ plasmactl platform:deploy myplatform
 
 ## License
 
-[European Union Public License 1.2 (EUPL-1.2)](LICENSE)
+[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

@@ -9,8 +9,11 @@
 | [plasmactl-component](component.md) | `component:` | Component versioning, dependencies, attach/detach |
 | [plasmactl-platform](platform.md) | `platform:` | Platform lifecycle — create, up, deploy, destroy |
 | [plasmactl-node](node.md) | `node:` | Node provisioning across providers |
-| [plasmactl-topology](topology.md) | `topology:` | Map zones to physical resources |
+| [plasmactl-topology](topology.md) | `zone:` | Topology structure — zones and node allocations |
+| [plasmactl-auth](auth.md) | `auth:` | Provider authentication — login, logout, status |
 | [plasmactl-processors](processors.md) | — | Template processors (e.g. Ansible Vault) |
+
+Credential storage is handled by the `keyring:` namespace (from [launchr](https://github.com/launchrctl/launchr)) — `keyring:login`, `keyring:set`, `keyring:list`, and friends.
 
 Install the CLI with:
 

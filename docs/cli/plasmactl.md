@@ -164,7 +164,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-[European Union Public License 1.2 (EUPL-1.2)](LICENSE)
+[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)
 
 ## Support
 
