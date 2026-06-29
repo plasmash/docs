@@ -4,12 +4,16 @@ Plasma is composed from a small set of building blocks. From smallest to largest
 
 ## Components
 
-A **component** is a single-purpose, reusable unit (an application, service, software, library, function, skill, or flow) living under `src/{layer}/{type}/{name}/`. Every component carries metadata (author, description, license, version) and the tasks needed to build and configure it.
+A **component** is a single-purpose, reusable unit living under `src/<layer>/<kind>/<name>/`. Every component carries metadata (author, description, license, version) and the tasks needed to build and configure it.
 
-Plasma uses **two parallel three-layer patterns**:
+Components compose along **two parallel patterns**, both following **HOW → WHAT → WHEN/WHY** (computation → configuration → orchestration):
 
-- **Flow components** (event-driven logic): **Function** (computation) → **Skill** (configuration) → **Flow** (orchestration).
-- **Application components** (infrastructure): **Software** (computation) → **Service** (configuration) → **Application** (orchestration).
+- **Event-driven logic:** **Function** (computation) → **Skill** (configuration) → **Agent** (orchestration)
+- **Infrastructure:** **Software** (computation) → **Service** (configuration) → **Application** (orchestration)
+
+A **function** is a universal computation; a **skill** configures it for a specific use; an **agent** decides *when* it runs. An agent embeds its own trigger — an event subscription (reactive) or a schedule (proactive) — and holds a repertoire of skills, selecting one from the incoming situation. Just as an **application** orchestrates services from a manifest, an **agent** orchestrates skills from its configuration.
+
+Other component kinds include **entities** (data contracts), **libraries** (shared code), and **builders** (build logic).
 
 ## Packages
 
