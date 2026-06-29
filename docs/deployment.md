@@ -16,7 +16,7 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
 ## Infrastructure
 
 - **Nodes** are provisioned and managed with [`plasmactl node`](cli/node.md) across providers.
-- **Topology** maps logical architecture (zones) to physical resources with the [`plasmactl zone`](cli/topology.md) commands.
+- **Topology** maps logical architecture (zones) to physical resources with the [`plasmactl zone`](cli/zone.md) commands.
 - Plasma targets **Kubernetes** for orchestration, with `etcd`, `Ceph`, and `Flannel` in the Foundation layer.
 
 ## Managed option

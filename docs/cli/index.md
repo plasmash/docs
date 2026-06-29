@@ -9,7 +9,7 @@
 | [plasmactl-component](component.md) | `component:` | Component versioning, dependencies, attach/detach |
 | [plasmactl-platform](platform.md) | `platform:` | Platform lifecycle — create, up, deploy, destroy |
 | [plasmactl-node](node.md) | `node:` | Node provisioning across providers |
-| [plasmactl-topology](topology.md) | `zone:` | Topology structure — zones and node allocations |
+| [plasmactl-zone](zone.md) | `zone:` | Topology structure — zones and node allocations |
 | [plasmactl-auth](auth.md) | `auth:` | Provider authentication — login, logout, status |
 | [plasmactl-processors](processors.md) | — | Template processors (e.g. Ansible Vault) |
 

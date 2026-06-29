@@ -40,7 +40,7 @@ nav:
       - component: cli/component.md
       - platform: cli/platform.md
       - node: cli/node.md
-      - topology: cli/topology.md
+      - zone: cli/zone.md
       - auth: cli/auth.md
       - processors: cli/processors.md
   - Deployment: deployment.md
