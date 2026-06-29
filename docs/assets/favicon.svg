@@ -1,9 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Plasma">
-  <defs><radialGradient id="pl_g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-0.028 24) rotate(-44.97) scale(33.96)">
-      <stop stop-color="#FD6F8E"/>
-      <stop offset=".333" stop-color="#7A5AF8"/>
-      <stop offset=".667" stop-color="#1570EF"/>
-      <stop offset="1" stop-color="#27FCE2"/>
-    </radialGradient></defs>
+  <defs><linearGradient id="pl_g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FD6F8E"/><stop offset=".333" stop-color="#7A5AF8"/><stop offset=".667" stop-color="#1570EF"/><stop offset="1" stop-color="#27FCE2"/></linearGradient></defs>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M24 0H0V24H24V0ZM3 21V3H21V15H15V21H3Z" fill="url(#pl_g)"/>
 </svg>
