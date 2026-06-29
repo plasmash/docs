@@ -64,13 +64,13 @@ Options:
 - `--strategy`: Merge strategy
 - `--strategy-path`: Paths for strategy
 
-### model:delete
+### model:remove
 
 Remove package dependencies:
 
 ```bash
-plasmactl model:delete --packages plasma-legacy
-plasmactl model:delete --packages pkg1 --packages pkg2
+plasmactl model:remove --packages plasma-legacy
+plasmactl model:remove --packages pkg1 --packages pkg2
 ```
 
 Options:

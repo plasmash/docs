@@ -21,4 +21,4 @@ Install the CLI with:
 curl -sSL https://get.plasma.sh | sh
 ```
 
-The pages in this section are sourced from each plugin's repository README on [github.com/plasmash](https://github.com/plasmash).
+The pages in this section mirror each plugin's repository README. For the exact, authoritative command set in **your** installed version, run `plasmactl <namespace> --help` (e.g. `plasmactl model --help`).
