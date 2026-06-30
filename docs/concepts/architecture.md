@@ -1,6 +1,6 @@
 # Architecture
 
-Plasma is built from **eight specialized layers**. Each has a dedicated purpose and its own message bus, and communicates through explicit relays — behavior emerges from channel topology, not a central coordinator.
+Plasma's architecture is organized into **eight specialized layers** — five in production today, three emerging (see the note below). Each has a dedicated purpose and its own message bus, and communicates through explicit relays — behavior emerges from channel topology, not a central coordinator.
 
 | | Layer | Purpose | Representative tech |
 |---|---|---|---|
@@ -14,13 +14,15 @@ Plasma is built from **eight specialized layers**. Each has a dedicated purpose 
 | **St** | **Stabilization** | System health monitoring and performance optimization across all layers | — |
 
 !!! note "What's established today"
-    Six layers are in production today — **Foundation, Integration, Cognition, Conversation, Interaction, Stabilization**. **Vision** and **Audition** are emerging perception layers; they extend the same model (their own bus, relays in and out) as sensory inputs mature.
+    Five layers are in production today — **Foundation, Integration, Cognition, Conversation, Interaction**. **Vision**, **Audition**, and **Stabilization** are emerging: they extend the same model (their own bus, relays in and out) but aren't built yet.
+
+    **Stabilization** in particular is a planned **homeostasis** layer — a stabilization agent watching system health and triggering skills to react: either *notify a human* or *apply a policy automatically* to nudge the system back toward a balanced state. The model is defined; the agent isn't implemented yet.
 
 ## How the layers relate
 
 - **Foundation** provisions and runs everything; **Integration** is the bus every other layer exchanges data through.
-- **Cognition**, **Vision**, and **Audition** are the sensing/processing layers — they turn raw signals into intelligence.
+- **Cognition** turns data into intelligence; **Vision** and **Audition** (emerging) will add visual and acoustic perception.
 - **Conversation** handles natural-language interaction; **Interaction** surfaces state to humans and external systems.
-- **Stabilization** observes the whole stack and keeps it healthy.
+- **Stabilization** (planned) will observe the whole stack and act to keep it balanced — see the note above.
 
 Each layer is realized as a set of **components** composed into **packages**. See [Concepts](component-model.md) for that model, and the [CLI reference](../cli/index.md) for how to compose and deploy them.

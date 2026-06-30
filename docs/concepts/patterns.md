@@ -25,7 +25,7 @@ Each layer has its **own** message bus, tuned to its semantics. Layers never sha
 | **Conversation** | Utterance bus | Matrix / Synapse | Chat, email, calls — federated, end-to-end encrypted |
 
 !!! note "Emerging buses"
-    Foundation, Interaction, and Stabilization are gaining their own buses as those layers mature. The principle holds regardless: **one bus per layer, relays between.**
+    Foundation and Interaction are gaining dedicated buses as they mature, and the emerging layers (Vision, Audition, Stabilization) will bring their own. The principle holds regardless: **one bus per layer, relays between.**
 
 ```mermaid
 flowchart LR
