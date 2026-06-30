@@ -1,8 +1,8 @@
 # Choreography & channels
 
-Plasma has no central scheduler — no Airflow, no Dagster, no orchestrator deciding what runs when. Instead, every unit of behavior is an **agent** that listens to a **channel** and acts. Coordination is an emergent property of how channels connect, not something a coordinator imposes.
+Plasma has no central scheduler — no Airflow, no Dagster, no central workflow deciding what runs when. Instead, every unit of behavior is an **agent** that listens to a **channel** and acts. Coordination is an emergent property of how channels connect, not something a coordinator imposes.
 
-This is **choreography**, not orchestration: behavior emerges from channel topology. Change the wiring and you change the behavior — without touching the logic.
+This is **choreography**, not workflows: behavior emerges from channel topology. Each agent still orchestrates its own skills — but no workflow sits above them sequencing the agents. Change the wiring and you change the behavior, without touching the logic.
 
 ## The grammar of action
 

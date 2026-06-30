@@ -14,7 +14,7 @@ Plasma has a compact but precise vocabulary. These terms recur throughout the do
 : *WHAT.* A function configured for a specific use case with concrete parameter values.
 
 **Agent**
-: *WHEN/WHY.* The event-driven orchestration unit. An agent holds a *repertoire* of skills, embeds its own **trigger** (a channel subscription or a cron schedule), and selects a skill based on the incoming situation. (Formerly: executor + flow.)
+: *WHEN.* The event-driven orchestration unit. An agent holds a *repertoire* of skills, embeds its own **trigger** (a channel subscription or a cron schedule), and selects a skill based on the incoming situation. (Formerly: executor + flow.)
 
 **Software**
 : *HOW.* A program providing a computational capability (e.g. Postgres, Grafana).
@@ -23,10 +23,10 @@ Plasma has a compact but precise vocabulary. These terms recur throughout the do
 : *WHAT.* Software configured for a specific deployment context.
 
 **Application**
-: *WHEN/WHY.* An orchestration of multiple services into a business capability.
+: *WHEN.* An orchestration of multiple services into a business capability.
 
 !!! note "The two triads"
-    Plasma has two parallel patterns, both **HOW → WHAT → WHEN/WHY**: `Function → Skill → Agent` (event-driven logic) and `Software → Service → Application` (infrastructure).
+    Plasma has two parallel patterns, both **HOW → WHAT → WHEN**: `Function → Skill → Agent` (event-driven logic) and `Software → Service → Application` (infrastructure).
 
 **Entity**
 : A digital representation of a real-world thing (Person, Project, Utterance). Defines *what exists*.
@@ -79,8 +79,8 @@ Plasma has a compact but precise vocabulary. These terms recur throughout the do
 **Ontology**
 : Entities + Metrics together — the stable data contract between systems, defined in Protobuf.
 
-**Choreography** (vs orchestration)
-: Behavior emerges from channel topology; each agent is its own micro-orchestrator. There is no central coordinator or external scheduler.
+**Choreography** (vs central workflows)
+: Behavior emerges from channel topology; each agent is its own micro-orchestrator, but no central workflow sequences the agents. There is no central coordinator or external scheduler.
 
 **Bus**
 : A layer's message transport, tuned to its semantics (NATS for Integration, Kafka for Cognition, Matrix/Synapse for Conversation).

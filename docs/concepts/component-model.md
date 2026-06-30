@@ -6,7 +6,7 @@ Plasma is composed from a small set of building blocks. From smallest to largest
 
 A **component** is a single-purpose, reusable unit living under `src/<layer>/<kind>/<name>/`. Every component carries metadata (author, description, license, version) and the tasks needed to build and configure it.
 
-Components compose along **two parallel patterns**, both following **HOW → WHAT → WHEN/WHY** (computation → configuration → orchestration):
+Components compose along **two parallel patterns**, both following **HOW → WHAT → WHEN** (computation → configuration → orchestration):
 
 - **Event-driven logic:** **Function** (computation) → **Skill** (configuration) → **Agent** (orchestration)
 - **Infrastructure:** **Software** (computation) → **Service** (configuration) → **Application** (orchestration)

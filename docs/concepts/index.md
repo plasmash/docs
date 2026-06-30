@@ -4,20 +4,20 @@ Plasma is a **digital nervous system** for an organization: it senses what's hap
 
 This section explains *how it's built* and *why*. If you only read one thing, read this page.
 
-## One idea, everywhere: HOW → WHAT → WHEN/WHY
+## One idea, everywhere: HOW → WHAT → WHEN
 
 Almost everything in Plasma composes along the same three-layer pattern, expressed twice:
 
-| Pattern | HOW (computation) | WHAT (configuration) | WHEN/WHY (orchestration) |
+| Pattern | HOW (computation) | WHAT (configuration) | WHEN (orchestration) |
 |---|---|---|---|
 | **Event-driven logic** | Function | Skill | **Agent** |
 | **Infrastructure** | Software | Service | **Application** |
 
 A **function** is a generic computation; a **skill** configures it for a use case; an **agent** decides *when* it runs and holds a repertoire of skills. The same shape governs software → service → application. Learn it once, read the whole platform. → [Component model](component-model.md)
 
-## Choreography, not orchestration
+## Choreography, not workflows
 
-There is no Airflow, no central scheduler. Each **agent embeds its own trigger** (a channel subscription or a cron expression) and selects a skill from the incoming **situation** — which is simply the channel it's listening on. Behavior emerges from **channel topology**. → [Choreography & channels](choreography.md)
+An agent orchestrates its *own* skills — but no central **workflow** sequences the agents. There is no Airflow, no DAG to maintain, no central scheduler. Each **agent embeds its own trigger** (a channel subscription or a cron expression) and selects a skill from the incoming **situation** — which is simply the channel it's listening on. Behavior emerges from **channel topology**. → [Choreography & channels](choreography.md)
 
 ## Layers with their own buses
 
