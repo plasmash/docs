@@ -32,4 +32,4 @@ plasmactl platform:create my-platform
 plasmactl platform:up
 ```
 
-From here, explore the [CLI reference](cli/index.md) for the full command set, or read [Concepts](concepts.md) to understand packages, models, and components.
+From here, explore the [CLI reference](cli/index.md) for the full command set, or read [Concepts](concepts/component-model.md) to understand packages, models, and components.

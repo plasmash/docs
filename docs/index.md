@@ -23,10 +23,10 @@ See [Install](install.md) for prerequisites and details.
 
 <div class="grid cards" markdown>
 
-- :material-layers-triple: **[Architecture](architecture.md)** — the eight specialized layers
-- :material-cube-outline: **[Concepts](concepts.md)** — components, packages, models
+- :material-lightbulb-on-outline: **[Concepts](concepts/index.md)** — how Plasma works, and why
+- :material-hammer-wrench: **[Build](build/index.md)** — author components
+- :material-rocket-launch-outline: **[Operate](operate/index.md)** — run & deploy a platform
 - :material-console: **[CLI reference](cli/index.md)** — `plasmactl` and its plugins
-- :material-rocket-launch: **[Deployment](deployment.md)** — run Plasma anywhere
 
 </div>
 

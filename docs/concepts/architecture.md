@@ -20,4 +20,4 @@ Plasma is built from **eight specialized layers**. Each has a dedicated purpose 
 - **Conversation** handles natural-language interaction; **Interaction** surfaces state to humans and external systems.
 - **Stabilization** observes the whole stack and keeps it healthy.
 
-Each layer is realized as a set of **components** composed into **packages**. See [Concepts](concepts.md) for that model, and the [CLI reference](cli/index.md) for how to compose and deploy them.
+Each layer is realized as a set of **components** composed into **packages**. See [Concepts](component-model.md) for that model, and the [CLI reference](../cli/index.md) for how to compose and deploy them.

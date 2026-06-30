@@ -15,12 +15,12 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
 
 ## Infrastructure
 
-- **Nodes** are provisioned and managed with [`plasmactl node`](cli/node.md) across providers.
-- **Zones** map logical architecture to physical resources — together they form the platform's topology — managed with the [`plasmactl zone`](cli/zone.md) commands.
+- **Nodes** are provisioned and managed with [`plasmactl node`](../cli/node.md) across providers.
+- **Zones** map logical architecture to physical resources — together they form the platform's topology — managed with the [`plasmactl zone`](../cli/zone.md) commands.
 - Plasma targets **Kubernetes** for orchestration, with `etcd`, `Ceph`, and `Flannel` in the Foundation layer.
 
 ## Managed option
 
 Prefer not to run it yourself? **[Plasma Cloud](https://www.skilld.cloud/plasma-cloud)** offers fully managed Plasma — infrastructure, updates, monitoring, and support — operated by Skilld, the creators of Plasma.
 
-For the complete command set, see the [CLI reference](cli/index.md).
+For the complete command set, see the [CLI reference](../cli/index.md).

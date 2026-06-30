@@ -30,9 +30,31 @@ theme:
 
 nav:
   - Home: index.md
-  - Install: install.md
-  - Architecture: architecture.md
-  - Concepts: concepts.md
+  - Get started:
+      - Install: install.md
+      - Quickstart: quickstart.md
+  - Concepts:
+      - Overview: concepts/index.md
+      - Architecture & layers: concepts/architecture.md
+      - Component model: concepts/component-model.md
+      - Choreography & channels: concepts/choreography.md
+      - Core patterns: concepts/patterns.md
+      - Topology & nodes: concepts/topology.md
+  - Build:
+      - Overview: build/index.md
+      - Component anatomy: build/component-anatomy.md
+      - Configuration: build/configuration.md
+      - Templates & filters: build/templates.md
+      - Entity schemas: build/schemas.md
+      - Kubernetes patterns: build/kubernetes.md
+      - Defining agents: build/agents.md
+  - Operate:
+      - Overview: operate/index.md
+      - Platform lifecycle: operate/lifecycle.md
+      - Nodes & topology: operate/nodes.md
+      - Deploying: operate/deploying.md
+      - Investigating a platform: operate/investigating.md
+      - Debugging: operate/debugging.md
   - CLI reference:
       - Overview: cli/index.md
       - plasmactl: cli/plasmactl.md
@@ -43,7 +65,14 @@ nav:
       - zone: cli/zone.md
       - auth: cli/auth.md
       - processors: cli/processors.md
-  - Deployment: deployment.md
+  - Integrate:
+      - MCP server: integrate/mcp.md
+      - Automation: integrate/automation.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - Dependency graph: reference/graph.md
+  - About:
+      - Open-core: about/open-core.md
 
 extra_css:
   - stylesheets/extra.css

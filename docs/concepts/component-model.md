@@ -44,4 +44,4 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
    (packages)      (merge)        (ansible)      (artifact)    (deploy)
 ```
 
-Continue to the [CLI reference](cli/index.md) for the commands behind each step.
+Continue to the [CLI reference](../cli/index.md) for the commands behind each step.
