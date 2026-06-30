@@ -1,16 +1,16 @@
 /* ============================================================================
-   Plasma docs — dark, readable, on-brand.
-   Body: Inter (long-form readability). Headings / code / nav: JetBrains Mono
-   (the Plasma identity). Emerald accent + the brand gradient
-   (pink → violet → blue → teal) for highlights.
+   Plasma docs — dark (default) and light, on-brand.
+   Body: Inter (readability). Headings / nav / code: JetBrains Mono (the brand).
+   Emerald accent + the Plasma gradient (pink → violet → blue → teal).
+   The header stays dark in both schemes (so the wordmark logo always reads).
    ============================================================================ */
 
 :root {
   --plasma-grad: linear-gradient(90deg, #FD6F8E 0%, #7A5AF8 33%, #1570EF 67%, #27FCE2 100%);
   --plasma-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --md-accent-fg-color: #10b981;
 }
 
+/* ---- Dark scheme (default) ---------------------------------------------- */
 [data-md-color-scheme="slate"] {
   --md-hue: 240;
   --md-default-bg-color: #060608;
@@ -28,72 +28,60 @@
   --md-footer-bg-color: #060608;
   --md-footer-bg-color--dark: #000;
   --plasma-border: #1d1d23;
+  --plasma-surface: #0c0c10;
+  --plasma-th-bg: #0d0d11;
+  --plasma-search-bg: #141418;
+  --plasma-scroll: #26262c;
+  --plasma-h1: #f4f4f6;
+}
+
+/* ---- Light scheme -------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #060608;       /* header stays dark */
+  --md-primary-bg-color: #e6e6ea;
+  --md-accent-fg-color: #059669;
+  --md-typeset-a-color: #059669;
+  --plasma-border: #e6e6ea;
+  --plasma-surface: #fafafa;
+  --plasma-th-bg: #f5f5f6;
+  --plasma-search-bg: #1a1a1f;          /* sits in the dark header */
+  --plasma-scroll: #cdcdd2;
+  --plasma-h1: #0b0b0d;
 }
 
 /* ---- Base reading rhythm ------------------------------------------------- */
-.md-typeset {
-  font-size: 0.82rem;
-  line-height: 1.72;
-}
-.md-typeset p,
-.md-typeset li { letter-spacing: 0.005em; }
+.md-typeset { font-size: 0.82rem; line-height: 1.72; }
+.md-typeset p, .md-typeset li { letter-spacing: 0.005em; }
 
-/* ---- Headings: JetBrains Mono, tight, bright ---------------------------- */
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4,
-.md-header__topic,
-.md-nav__title {
-  font-family: var(--plasma-mono);
-}
-.md-typeset h1 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #f4f4f6;
-}
+/* ---- Headings: JetBrains Mono ------------------------------------------- */
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4,
+.md-header__topic, .md-nav__title { font-family: var(--plasma-mono); }
+.md-typeset h1 { font-weight: 700; letter-spacing: -0.02em; color: var(--plasma-h1); }
 .md-typeset h2 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-top: 2.4em;
-  padding-top: 1.2em;
+  font-weight: 600; letter-spacing: -0.01em;
+  margin-top: 2.4em; padding-top: 1.2em;
   border-top: 1px solid var(--plasma-border);
 }
 .md-typeset h3 { font-weight: 600; letter-spacing: -0.01em; }
-
-/* H1 gets the brand-gradient underline */
 .md-content .md-typeset > h1:first-of-type {
-  display: inline-block;
-  padding-bottom: 8px;
+  display: inline-block; padding-bottom: 8px;
   background: var(--plasma-grad);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 2px;
+  background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 2px;
 }
 
-/* ---- Header ------------------------------------------------------------- */
-.md-header {
-  background-color: #000;
-  border-bottom: 1px solid var(--plasma-border);
-  box-shadow: none;
-}
+/* ---- Header (dark in both schemes) -------------------------------------- */
+.md-header { background-color: #000; border-bottom: 1px solid #1d1d23; box-shadow: none; }
 .md-header::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 2px;
-  background: var(--plasma-grad);
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--plasma-grad);
 }
 .md-tabs { background-color: #000; }
-/* Logo is the full Plasma wordmark — hide the duplicate site-name text */
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg { height: 1.45rem; width: auto; }
+.md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.45rem; width: auto; }
 .md-header__title .md-header__topic:first-child .md-ellipsis { display: none; }
 
 /* ---- Links -------------------------------------------------------------- */
 .md-typeset a {
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+  text-decoration: none; border-bottom: 1px solid transparent;
   transition: color .15s, border-color .15s;
 }
 .md-typeset a:hover {
@@ -104,107 +92,70 @@
 /* ---- Code --------------------------------------------------------------- */
 .md-typeset code {
   font-family: var(--plasma-mono);
-  border: 1px solid var(--plasma-border);
-  border-radius: 4px;
-  padding: 0.1em 0.36em;
-  font-size: 0.86em;
+  border: 1px solid var(--plasma-border); border-radius: 4px;
+  padding: 0.1em 0.36em; font-size: 0.86em;
 }
-.md-typeset pre > code {
-  border: none;
-  padding: 0;
-}
-.md-typeset pre {
-  border-radius: 8px;
-}
-.md-typeset .highlight > pre,
-.md-typeset > pre {
-  border: 1px solid var(--plasma-border);
-  border-radius: 8px;
+.md-typeset pre > code { border: none; padding: 0; }
+.md-typeset pre { border-radius: 8px; }
+.md-typeset .highlight > pre, .md-typeset > pre {
+  border: 1px solid var(--plasma-border); border-radius: 8px;
 }
 .md-typeset .highlight code { line-height: 1.6; }
 
 /* ---- Navigation --------------------------------------------------------- */
 .md-nav { font-size: 0.72rem; }
-.md-nav__item--section > .md-nav__link,
-.md-nav__title {
-  font-family: var(--plasma-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.md-nav__item--section > .md-nav__link, .md-nav__title {
+  font-family: var(--plasma-mono); font-size: 0.66rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--md-default-fg-color--lighter);
 }
-.md-nav__link--active,
-.md-nav__link:focus,
-.md-nav__link:hover { color: var(--md-accent-fg-color); }
-/* gradient accent bar on the active page */
-.md-sidebar--primary .md-nav__link--active {
-  position: relative;
-  font-weight: 600;
-}
+.md-nav__link--active, .md-nav__link:focus, .md-nav__link:hover { color: var(--md-accent-fg-color); }
+.md-sidebar--primary .md-nav__link--active { position: relative; font-weight: 600; }
 .md-sidebar--primary .md-nav__link--active::before {
-  content: "";
-  position: absolute;
-  left: -0.85rem; top: 0.15em; bottom: 0.15em;
-  width: 2px; border-radius: 2px;
-  background: var(--plasma-grad);
+  content: ""; position: absolute; left: -0.85rem; top: 0.15em; bottom: 0.15em;
+  width: 2px; border-radius: 2px; background: var(--plasma-grad);
 }
 .md-typeset .md-nav__link { font-family: inherit; }
-
-/* table of contents */
 .md-nav--secondary .md-nav__link--active { color: var(--md-accent-fg-color); }
 
-/* ---- Admonitions: tint with accent -------------------------------------- */
-.md-typeset .admonition,
-.md-typeset details {
-  border: 1px solid var(--plasma-border);
-  border-radius: 8px;
-  background: #0c0c10;
-  font-size: 0.78rem;
+/* ---- Admonitions -------------------------------------------------------- */
+.md-typeset .admonition, .md-typeset details {
+  border: 1px solid var(--plasma-border); border-radius: 8px;
+  background: var(--plasma-surface); font-size: 0.78rem;
 }
 .md-typeset .admonition.note { border-left: 3px solid var(--md-accent-fg-color); }
 
 /* ---- Tables ------------------------------------------------------------- */
 .md-typeset table:not([class]) {
-  border: 1px solid var(--plasma-border);
-  border-radius: 8px;
-  font-size: 0.76rem;
+  border: 1px solid var(--plasma-border); border-radius: 8px; font-size: 0.76rem;
 }
 .md-typeset table:not([class]) th {
-  background: #0d0d11;
-  font-family: var(--plasma-mono);
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  background: var(--plasma-th-bg); font-family: var(--plasma-mono);
+  font-weight: 600; letter-spacing: 0.01em;
 }
 .md-typeset table:not([class]) td { border-top: 1px solid var(--plasma-border); }
 
-/* ---- Search ------------------------------------------------------------- */
-.md-search__input { background-color: #141418; border-radius: 6px; }
-.md-search__input:hover { background-color: #1a1a1f; }
+/* ---- Search (in the dark header) ---------------------------------------- */
+.md-search__input { background-color: var(--plasma-search-bg); border-radius: 6px; color: #e6e6ea; }
+.md-search__input::placeholder { color: #8b8b93; }
 
-/* ---- Grid cards (home) -------------------------------------------------- */
-.md-typeset .grid.cards > ul > li,
-.md-typeset .grid > .card {
-  border: 1px solid var(--plasma-border);
-  border-radius: 8px;
-  background: #0c0c10;
+/* ---- Grid cards --------------------------------------------------------- */
+.md-typeset .grid.cards > ul > li, .md-typeset .grid > .card {
+  border: 1px solid var(--plasma-border); border-radius: 8px;
+  background: var(--plasma-surface);
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
-.md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid > .card:hover {
+.md-typeset .grid.cards > ul > li:hover, .md-typeset .grid > .card:hover {
   border-color: var(--md-typeset-a-color);
-  box-shadow: 0 0 0 1px rgba(16,185,129,.25);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-typeset-a-color) 25%, transparent);
   transform: translateY(-2px);
 }
 
-/* ---- Buttons (tabbed code, etc.) ---------------------------------------- */
+/* ---- Tabbed code -------------------------------------------------------- */
 .md-typeset .tabbed-labels > label { font-family: var(--plasma-mono); font-size: 0.74rem; }
 .md-typeset .tabbed-set > input:checked + label { color: var(--md-accent-fg-color); }
 
-/* ---- Footer ------------------------------------------------------------- */
-.md-footer-meta { background-color: #000; }
-
 /* ---- Scrollbar ---------------------------------------------------------- */
-* { scrollbar-width: thin; scrollbar-color: #2a2a30 transparent; }
+* { scrollbar-width: thin; scrollbar-color: var(--plasma-scroll) transparent; }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb { background: #26262c; border-radius: 6px; border: 2px solid #060608; }
-*::-webkit-scrollbar-thumb:hover { background: #34343c; }
+*::-webkit-scrollbar-thumb { background: var(--plasma-scroll); border-radius: 6px; }

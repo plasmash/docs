@@ -13,6 +13,9 @@ Plasma is built from **eight specialized layers**. Each has a dedicated purpose 
 | **Ia** | **Interaction** | Dashboards, visualization, monitoring, external communication | Grafana, Graylog, Prometheus |
 | **St** | **Stabilization** | System health monitoring and performance optimization across all layers | — |
 
+!!! note "What's established today"
+    Six layers are in production today — **Foundation, Integration, Cognition, Conversation, Interaction, Stabilization**. **Vision** and **Audition** are emerging perception layers; they extend the same model (their own bus, relays in and out) as sensory inputs mature.
+
 ## How the layers relate
 
 - **Foundation** provisions and runs everything; **Integration** is the bus every other layer exchanges data through.
