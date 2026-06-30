@@ -1,4 +1,4 @@
-# Deployment
+# Deploying
 
 Plasma runs anywhere you can run containers — **on-premise, private cloud, public cloud (AWS, Azure, GCP), hybrid, multi-cloud, or fully air-gapped**. You own the infrastructure; there is no managed control plane or vendor lock-in.
 

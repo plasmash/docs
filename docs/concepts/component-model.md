@@ -1,4 +1,4 @@
-# Concepts
+# Component model
 
 Plasma is composed from a small set of building blocks. From smallest to largest: **components → packages → models → platforms**.
 

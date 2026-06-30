@@ -151,21 +151,6 @@ plasmactl platform:up --help
 plasmactl node:provision --help
 ```
 
-## Documentation
-
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-- [GitHub Repository](https://github.com/plasmash/plasmactl)
-- [Report Issues](https://github.com/plasmash/plasmactl/issues)
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/plasmash/plasmactl/issues)
-- **Website**: [plasma.sh](https://plasma.sh)

@@ -151,13 +151,3 @@ app:
 
 ### "Decryption failed"
 Verify your passphrase is correct and the vault file is properly encrypted.
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-- [Launchr Keyring](https://github.com/launchrctl/keyring) - Secure credential storage
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

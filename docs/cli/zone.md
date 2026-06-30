@@ -176,14 +176,3 @@ plasmactl zone:remove platform.interaction.legacy
 | plasmactl-component | `component:attach` | Attach components to zones |
 | plasmactl-component | `component:detach` | Detach components from zones |
 | plasmactl-platform | `platform:deploy` | Deploy to zones |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [plasmactl-node](https://github.com/plasmash/plasmactl-node) - Node management
-- [plasmactl-component](https://github.com/plasmash/plasmactl-component) - Component management
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

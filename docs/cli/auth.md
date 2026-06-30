@@ -134,12 +134,3 @@ In the Scaleway console: **Identity and Access Management → API keys → Creat
 | [plasmactl-platform](https://github.com/plasmash/plasmactl-platform)    | Platform lifecycle and Terraform glue  |
 | [plasmactl-node](https://github.com/plasmash/plasmactl-node)            | Node provisioning consumers            |
 | [launchrctl/keyring](https://github.com/launchrctl/keyring)             | Underlying credential storage          |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) — main CLI tool
-- [Plasma Platform](https://plasma.sh) — platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

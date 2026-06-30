@@ -270,13 +270,3 @@ plasmactl platform:deploy dev
 |-----------|------|---------|
 | `.pm` | Platform Model | Composed bundle artifact |
 | `.pi` | Platform Image | Bootable VM image (future) |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [plasmactl-component](https://github.com/plasmash/plasmactl-component) - Component management
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

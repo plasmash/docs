@@ -208,13 +208,3 @@ plasmactl component:attach interaction.applications.new platform.interaction.obs
 | plasmactl-zone | `zone:list` | List available zones |
 | plasmactl-zone | `zone:show` | Show zone details |
 | plasmactl-model | `model:compose` | Compose packages after version updates |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [plasmactl-zone](https://github.com/plasmash/plasmactl-zone) - Topology management
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

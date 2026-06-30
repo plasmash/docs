@@ -230,14 +230,3 @@ plasmactl keyring:login github
 | plasmactl-model | `model:compose` | Compose packages |
 | plasmactl-model | `model:prepare` | Prepare for deployment |
 | plasmactl-component | `component:bump` | Bump versions |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [plasmactl-node](https://github.com/plasmash/plasmactl-node) - Node provisioning
-- [plasmactl-model](https://github.com/plasmash/plasmactl-model) - Model composition
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

@@ -256,13 +256,3 @@ plasmactl platform:deploy myplatform
 | plasmactl-zone | `zone:list` | List available zones |
 | plasmactl-zone | `zone:show` | Show nodes allocated to a zone |
 | plasmactl-platform | `platform:deploy` | Deploy to provisioned nodes |
-
-## Documentation
-
-- [Plasmactl](https://github.com/plasmash/plasmactl) - Main CLI tool
-- [plasmactl-zone](https://github.com/plasmash/plasmactl-zone) - Topology management
-- [Plasma Platform](https://plasma.sh) - Platform documentation
-
-## License
-
-[European Union Public License 1.2 (EUPL-1.2)](https://github.com/plasmash/.github/blob/main/LICENSE)

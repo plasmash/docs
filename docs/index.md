@@ -2,7 +2,10 @@
 
 **The open-source real-time intelligence platform.** Process, decide, and act on data as it happens.
 
-Plasma is a composable platform of specialized layers that provision, process, decide, and act — autonomously. Deploy AI/ML workloads, event-driven flows, and real-time analytics on your own infrastructure: on-premise, private cloud, public cloud, or air-gapped.
+Plasma is a composable platform of specialized layers that provision, process, decide, and act — autonomously. Deploy AI/ML workloads, event-driven agents, and real-time analytics on your own infrastructure: on-premise, private cloud, public cloud, or air-gapped.
+
+[Get started :material-arrow-right:](quickstart.md){ .md-button .md-button--primary }
+[Concepts](concepts/index.md){ .md-button }
 
 ## Install in seconds
 

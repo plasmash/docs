@@ -76,6 +76,7 @@
   height: 2px; background: var(--plasma-grad);
 }
 .md-tabs { background-color: #000; }
+.md-header__button.md-logo { display: inline-flex; align-items: center; }
 .md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.45rem; width: auto; }
 .md-header__title .md-header__topic:first-child .md-ellipsis { display: none; }
 
@@ -150,6 +151,34 @@
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-typeset-a-color) 25%, transparent);
   transform: translateY(-2px);
 }
+
+/* ---- Buttons (CTAs) ----------------------------------------------------- */
+.md-typeset .md-button {
+  border-radius: 6px;
+  border-color: var(--md-typeset-a-color);
+  color: var(--md-typeset-a-color);
+  font-family: var(--plasma-mono);
+  font-size: 0.74rem;
+}
+.md-typeset .md-button:hover {
+  background-color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+  color: #042016;
+}
+.md-typeset .md-button--primary {
+  background-color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+  color: #042016;
+}
+.md-typeset .md-button--primary:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: #042016;
+}
+
+/* ---- Header tabs: brand accent on active/hover -------------------------- */
+.md-tabs__link { opacity: 1; font-size: 0.74rem; }
+.md-tabs__link--active, .md-tabs__link:hover { color: var(--md-accent-fg-color); }
 
 /* ---- Tabbed code -------------------------------------------------------- */
 .md-typeset .tabbed-labels > label { font-family: var(--plasma-mono); font-size: 0.74rem; }
