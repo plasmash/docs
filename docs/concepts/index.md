@@ -23,16 +23,17 @@ An agent orchestrates its *own* skills — but no central **workflow** sequences
 
 Plasma is organized into specialized **layers**, each with a message **bus** tuned to its semantics (NATS, Kafka, Matrix). Layers never share a bus — the only cross-layer coupling is an explicit **relay** with backpressure. → [Architecture & layers](architecture.md) · [Core patterns](patterns.md)
 
-## A biological analogy
+## A digital organism
 
-If it helps to hold the whole thing in your head:
+The point of all this isn't a stack of services — it's a **living system**. Plasma is built to behave like an organism: it takes in what's happening, makes sense of it, acts, and keeps itself in balance — continuously, and on its own.
 
-| Plasma | Body |
-|---|---|
-| Topology (skeleton), Nodes (bones) | structure |
-| Applications (organs), Services (tissues), Software (cells) | execution |
-| Agents (nerve signals), Skills (reflexes), Functions (neurons) | intelligence |
-| Integration (spinal cord), Foundation (circulatory), Cognition (brain), Conversation (speech & hearing), Interaction (senses), Stabilization (homeostasis) | layers |
+- **It perceives.** Foundation and Integration take in the world — events, metrics, signals — and carry complete state ([ECST](patterns.md#ecst-event-carried-state-transfer)).
+- **It understands.** Cognition turns raw data into knowledge and wisdom ([DIKW](patterns.md#dikw-the-analytics-hierarchy)).
+- **It acts.** Agents fire on the situations they care about and choose how to respond — no central brain issuing orders.
+- **It communicates.** Conversation and Interaction speak to people and to other systems.
+- **It self-regulates.** Stabilization (emerging) watches its own health and nudges the whole system back toward a balanced state — **homeostasis**.
+
+And like any organism, **no single organ is in charge**. Behavior emerges from how the parts are wired together — the way reflexes and nerve signals coordinate a body with no conductor. That's why Plasma is choreographed, not run from a [central workflow](choreography.md).
 
 ## In this section
 
