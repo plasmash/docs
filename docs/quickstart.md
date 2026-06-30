@@ -38,7 +38,7 @@ dependencies:
 plasmactl platform:up
 ```
 
-`platform:up` runs the full workflow — **bump → compose → prepare → deploy**. Bringing real infrastructure up takes time (a single application is 15–30 min; a full platform can be hours) — see [Deploying](operate/deploying.md).
+`platform:up` runs the full workflow — **bump → compose → prepare → deploy**. Bringing real infrastructure up takes time, depending on what's being built — a simple application can be ~5 minutes, heavier ones longer, and a full platform can take hours. See [Deploying](operate/deploying.md).
 
 ## 5. See what you built
 
