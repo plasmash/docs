@@ -21,6 +21,6 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
 
 ## Managed option
 
-Prefer not to run it yourself? **[Plasma Cloud](https://skilld.cloud)** offers fully managed Plasma — infrastructure, updates, monitoring, and support — operated by Skilld, the creators of Plasma.
+Prefer not to run it yourself? **[Plasma Cloud](https://www.skilld.cloud/plasma-cloud)** offers fully managed Plasma — infrastructure, updates, monitoring, and support — operated by Skilld, the creators of Plasma.
 
 For the complete command set, see the [CLI reference](cli/index.md).
