@@ -17,25 +17,25 @@ Application components also add `tasks/readiness.yaml` and `tasks/configuration.
 
 ## Metadata
 
-`meta/plasma.yaml` carries the component's identity. The key fields (MR = *Machine Resource*):
-
-| Field | Meaning |
-|---|---|
-| `mrn` | Full name — `interaction.applications.dashboards` |
-| `mrsn` | Short name — `dashboards` |
-| `mrk` | Kind — `application`, `service`, `agent`, … |
-| `mrv` | Version — the **git commit hash** at last change |
-| `mrt` | Tags |
-| `mri` | Docker image map |
+The one file you author for identity is `meta/plasma.yaml` — a single `plasma:` block. The component's **kind** is carried in `categories` as `kind.<type>`:
 
 ```yaml
 plasma:
   author: Your Name
-  categories: [machine, kind.service]
+  categories: [machine, kind.service]   # kind.function / kind.skill / kind.agent / …
   description: One-line description of the component
   license: EUPL-1.2
-  version: 4fc38a21d392f   # mrv — set by plasmactl
+  version: 4fc38a21d392f                # the git commit hash — set by plasmactl
 ```
+
+At **runtime** each component becomes a **Machine Resource (MR)** whose attributes are derived from its path and metadata and referenced in tasks and templates:
+
+| Attribute | Meaning |
+|---|---|
+| `mrn` | Full name — `integration__skills__erp_person_registrar` |
+| `mrc` | The component's **channel** — `platform.integration.…` |
+| `version` | The git commit hash at last change |
+| `state` | Per-tag build state (drives the `when:` guards in tasks) |
 
 ## The standardized task structure
 
@@ -44,14 +44,14 @@ Every component's `tasks/main.yaml` follows the same pattern: create a working d
 ```yaml
 - name: Create working directory
   file: path=/tmp/{{ component.mrn }} state=directory
-  when: component | build
+  when: component.state[machine_resource_default_tag]['build']
 
 - name: Build
   include_role:
-    name: platform.helpers.{component_type}_builder
+    name: integration.builders.skill        # <layer>.builders.<kind>
   vars:
-    {component_type}_builder_resource: "{{ component }}"
-    {component_type}_builder_context: cluster   # or image
+    skill_resource: "{{ component }}"        # <kind>_resource
+  when: component.state[machine_resource_default_tag]['build']
 ```
 
 !!! warning "Always use builders"

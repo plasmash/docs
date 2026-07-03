@@ -11,7 +11,7 @@ By the end you'll have touched all three sides of Plasma: an **entity** (the con
 
 ```mermaid
 flowchart LR
-  R["Reading<br/><small>entity · the contract</small>"] -->|lands on channel| AG["overheat-watch<br/><small>agent · WHEN</small>"]
+  R["Reading<br/><small>entity · the contract</small>"] -->|lands on channel| AG["monitoring agent<br/><small>overheat_watch flow · WHEN</small>"]
   AG -->|selects| SK["overheat<br/><small>skill · WHAT</small>"]
   SK -->|configures| FN["threshold<br/><small>function · HOW</small>"]
   FN -->|breach| OUT["alert channel<br/><small>new situation</small>"]
@@ -47,7 +47,7 @@ syntax = "proto3";
 package machine.reading;
 
 message Reading {
-  string id        = 1 [(is_primary_key) = true];
+  string id        = 1 [(is_primary_key)=true];
   string sensor_id = 2;
   double celsius   = 3;
   int64  observed_at = 4;
@@ -62,49 +62,65 @@ plasmactl platform.entities:generate-schemas
 
 ## 3. Write the function (HOW)
 
-A **function** is a generic, reusable computation. `threshold` compares a value against a limit — it knows nothing about temperature yet:
+A **function** is a generic, reusable computation. `threshold` compares a value against a limit — it knows nothing about temperature yet. Every component is identified by its `meta/plasma.yaml`, its kind carried in `categories`:
 
 ```yaml title="src/integration/functions/threshold/meta/plasma.yaml"
-kind: function
-metadata: { pcn: "integration.functions.threshold", pcsn: "threshold" }
-name: "integration.functions.threshold"
-description: "Reports whether a numeric value exceeds a limit"
-parameters: [value, limit]
+plasma:
+  author: You
+  categories: [machine, kind.function]
+  description: Reports whether a value exceeds a limit
+  license: EUPL-1.2
+  version: 4fc38a21d392f    # set by plasmactl component:bump
 ```
+
+The computation itself lives in `files/` as code — Go for the Integration layer.
 
 ## 4. Configure a skill (WHAT)
 
-A **skill** binds the function's parameters to concrete values for one use case — here, watching a reading's `celsius` against a safe ceiling:
+A **skill** configures the function for one use case — here, watching a reading's `celsius` against a safe ceiling. It carries prefixed default variables and a config template the function reads at runtime:
 
 ```yaml title="src/integration/skills/overheat/meta/plasma.yaml"
-kind: skill
-metadata: { pcn: "integration.skills.overheat", pcsn: "overheat" }
-name: "integration.skills.overheat"
-description: "Flags a reading whose temperature exceeds the safe limit"
-function: integration.functions.threshold
-bindings:
+plasma:
+  author: You
+  categories: [machine, kind.skill]
+  description: Flags a reading whose temperature exceeds the safe limit
+  license: EUPL-1.2
+  version: eed584e7b4fc3
+```
+
+```yaml title="src/integration/skills/overheat/defaults/main.yaml"
+overheat_limit_celsius: 80
+```
+
+```jinja title="src/integration/skills/overheat/templates/config.yaml.j2"
+threshold:
   value: "{{ reading.celsius }}"
-  limit: 80
+  limit: {{ overheat_limit_celsius }}
 ```
 
 ## 5. Wire the agent (WHEN)
 
-An **agent** decides *when* the skill runs. It embeds its own trigger — no external scheduler — and holds a repertoire of skills, choosing one from the incoming situation. Here it subscribes to the `Reading` channel and fires on every new reading:
+An **agent** decides *when* the skill runs. It manages **flows** — inline specs in its `manifests.yaml.j2`, each binding a trigger to a skill and an output channel. No external scheduler: the flow reacts to the channel where readings are published (`data:…event`).
 
-```yaml title="src/integration/agents/overheat-watch/meta/plasma.yaml"
-kind: agent
-metadata: { pcn: "integration.agents.overheat-watch", pcsn: "overheat-watch" }
-name: "integration.agents.overheat-watch"
-description: "Watches sensor readings and reacts when one overheats"
-trigger:
-  channel: platform.integration.machine.reading   # reactive: fires on each new reading
-skills:
-  - integration.skills.overheat
-output:
-  channel: skill.mrc          # join — emit breaches onto the skill's channel
+```yaml title="src/integration/agents/monitoring/meta/plasma.yaml"
+plasma:
+  author: You
+  categories: [machine, kind.agent]
+  description: The monitoring-related flows manager
+  license: EUPL-1.2
+  version: f659b631a9df9
 ```
 
-The `output.channel` is the one field that decides topology: routing to `skill.mrc` makes downstream consumers see a single joined stream; routing to `agent.mrc/situation` keeps parallel flows separate. See [join vs divide](../concepts/choreography.md#channel-routing-join-vs-divide).
+```jinja title="src/integration/agents/monitoring/templates/manifests.yaml.j2"
+---
+kind: Flow
+name: overheat_watch
+trigger: "data:{{ integration__skills__reading_registrar.mrc }}.event"   # fires on each new reading
+output: {{ integration__skills__overheat.mrc }}
+skill: integration.skills.overheat
+```
+
+The `output` channel is the one field that decides topology — where several flows converge or stay separate. See [join vs divide](../concepts/choreography.md#channel-routing-join-vs-divide). (The `reading_registrar` skill is the one that publishes `Reading` events onto the bus.)
 
 ## 6. Version your components
 
@@ -135,9 +151,9 @@ plasmactl platform:graph
 Once up, the loop runs with no central coordinator:
 
 1. A sensor publishes a `Reading` onto the integration bus (NATS).
-2. `overheat-watch` is subscribed to that channel, so it wakes for each reading.
-3. It selects the `overheat` skill, which runs `threshold` with `limit: 80`.
-4. On a breach, it emits a new event onto the alert channel — which another agent can react to, and so on.
+2. The `overheat_watch` flow is triggered on that channel, so it fires for each reading.
+3. It runs the `overheat` skill, which configures `threshold` with `limit: 80`.
+4. On a breach, it emits onto the `overheat` skill's channel — which another agent's flow can react to, and so on.
 
 That last step is [choreography](../concepts/choreography.md): behaviour emerges from what listens to what, not from an orchestrator calling steps.
 

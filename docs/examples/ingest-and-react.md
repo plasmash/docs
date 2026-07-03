@@ -7,10 +7,10 @@ This example strings together four Plasma patterns: a **connector** to ingest, a
 ```mermaid
 flowchart LR
   ERP[("External ERP")] -->|Airbyte connect| E["Shipment<br/><small>entity on NATS</small>"]
-  E --> D1["delay-detect<br/><small>agent</small>"]
-  E --> D2["route-check<br/><small>agent</small>"]
-  D1 -->|ShipmentDelayed| N["notify<br/><small>agent</small>"]
-  D2 -->|ShipmentDelayed| N
+  E --> D1["delay_detect<br/><small>flow</small>"]
+  E --> D2["route_check<br/><small>flow</small>"]
+  D1 -->|delay_flag channel| N["notify<br/><small>flow</small>"]
+  D2 -->|delay_flag channel| N
   N --> AL["alert channel<br/><small>email · SMS</small>"]
 ```
 
@@ -34,7 +34,7 @@ syntax = "proto3";
 package machine.shipment;
 
 message Shipment {
-  string id          = 1 [(is_primary_key) = true];
+  string id          = 1 [(is_primary_key)=true];
   string status      = 2;   // in_transit | delivered | ...
   int64  eta         = 3;
   int64  promised_by = 4;
@@ -43,35 +43,39 @@ message Shipment {
 
 ## 3. React with a choreography
 
-Two independent agents subscribe to the `Shipment` channel — each watches for a different problem. Neither knows about the other; they simply react to the same situation:
+A `shipments` **agent** manages two **flows** — each an inline spec reacting to the same `Shipment` channel, watching for a different problem. Neither flow knows about the other; they simply react to the same situation:
 
-```yaml title="src/integration/agents/delay-detect/meta/plasma.yaml"
-kind: agent
-metadata: { pcn: "integration.agents.delay-detect", pcsn: "delay-detect" }
-trigger:
-  channel: platform.integration.machine.shipment
-skills:
-  - integration.skills.eta-slipped        # flags eta > promised_by
-output:
-  channel: skill.mrc                       # join — see below
+```jinja title="src/integration/agents/shipments/templates/manifests.yaml.j2"
+---
+kind: Flow
+name: delay_detect
+trigger: "data:{{ integration__skills__shipment_registrar.mrc }}.event"
+output: {{ integration__skills__delay_flag.mrc }}
+skill: integration.skills.eta_slipped         # flags eta > promised_by
+---
+kind: Flow
+name: route_check
+trigger: "data:{{ integration__skills__shipment_registrar.mrc }}.event"
+output: {{ integration__skills__delay_flag.mrc }}
+skill: integration.skills.route_deviation
 ```
 
-`route-check` looks the same but carries a different skill. Because both emit onto **`skill.mrc`**, their outputs **join** into a single `ShipmentDelayed` stream that one notifier consumes — instead of two parallel streams. That one field is the whole topology decision; see [join vs divide](../concepts/choreography.md#channel-routing-join-vs-divide).
+Because both flows emit onto the **same `delay_flag` channel**, their outputs **join** into one stream that a single notifier consumes — instead of two parallel streams. That output field is the whole topology decision; see [join vs divide](../concepts/choreography.md#channel-routing-join-vs-divide).
 
 ## 4. Notify
 
-A `notify` agent subscribes to the joined delay stream and dispatches through the [alert machine](../operate/observability.md#alerting), which routes per person over email or SMS:
+A `notify` flow triggers on the joined `delay_flag` channel and dispatches through the [alert machine](../operate/observability.md#alerting), which routes per person over email or SMS:
 
 ```mermaid
 flowchart LR
-  J["ShipmentDelayed<br/><small>joined stream</small>"] --> N["notify agent"]
+  J["delay_flag channel<br/><small>joined stream</small>"] --> N["notify flow"]
   N -->|per-person routing| M["email"]
   N -->|per-person routing| S["SMS"]
 ```
 
 ## Why this shape
 
-- **No orchestrator** — adding a third detector is a new agent subscribing to the same channel; nothing else changes. Behaviour emerges from what listens to what.
+- **No orchestrator** — adding a third detector is a new flow reacting to the same channel; nothing else changes. Behaviour emerges from what listens to what.
 - **The contract decouples everyone** — the ERP connector, the detectors, and the notifier only agree on the `Shipment` proto.
 - **Ingestion is configuration, not code** — the connector is declared, not written.
 

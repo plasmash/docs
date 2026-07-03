@@ -13,14 +13,14 @@ An entity's schema lives in its component:
 Protobuf is chosen deliberately: it supports **backward- and forward-compatible** evolution.
 
 - Proto package convention: `machine.<entity_name>` (e.g. `machine.person`)
-- Primary keys are marked with a custom option: `[(is_primary_key) = true]`
+- Primary keys are marked with a custom option: `[(is_primary_key)=true]`
 
 ```proto
 syntax = "proto3";
 package machine.person;
 
 message Person {
-  string id = 1 [(is_primary_key) = true];
+  string id = 1 [(is_primary_key)=true];
   string display_name = 2;
 }
 ```

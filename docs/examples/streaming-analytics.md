@@ -22,18 +22,27 @@ This is the [layered architecture](../concepts/architecture.md) doing its job: e
 
 ## 2. Compute the metric
 
-The aggregation is a **function** (the *how*), a **skill** binds it to a one-minute window (the *what*), and a **Cognition agent** runs it continuously (the *when*) — the same [Function → Skill → Agent](../concepts/component-model.md) triad you already know, on the Cognition runtime:
+The aggregation is a **function** (the *how*), a **skill** configures a one-minute window (the *what*), and a **Cognition agent** manages the **flow** that runs it continuously (the *when*) — the same [Function → Skill → Agent](../concepts/component-model.md) triad you already know, on the Cognition runtime:
 
-```yaml title="src/cognition/agents/throughput/meta/plasma.yaml"
-kind: agent
-metadata: { pcn: "cognition.agents.throughput", pcsn: "throughput" }
-trigger:
-  channel: platform.cognition.machine.event   # streaming: consumes the Kafka topic
-skills:
-  - cognition.skills.per-minute-count
+```yaml title="src/cognition/agents/metrics/meta/plasma.yaml"
+plasma:
+  author: You
+  categories: [machine, kind.agent]
+  description: The metrics-related flows manager
+  license: EUPL-1.2
+  version: c0f288cc460e2
 ```
 
-The aggregation logic itself lives in the function; the agent just decides it runs on every window of the stream.
+```jinja title="src/cognition/agents/metrics/templates/manifests.yaml.j2"
+---
+kind: Flow
+name: per_minute_throughput
+trigger: "data:{{ integration__skills__event_registrar.mrc }}.event"   # consumes the event stream
+output: {{ cognition__skills__per_minute_count.mrc }}
+skill: cognition.skills.per_minute_count
+```
+
+The aggregation logic itself lives in the function (Scala/Spark); the flow just decides it runs on every window of the stream.
 
 ## 3. A metric is a contract
 

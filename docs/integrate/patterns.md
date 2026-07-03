@@ -31,7 +31,7 @@ Plasma treats its **ontology as the contract**. Entities and metrics are defined
 
 ```protobuf
 message Person {
-  string id = 1 [(is_primary_key) = true];
+  string id = 1 [(is_primary_key)=true];
   string name = 2;
 }
 ```
