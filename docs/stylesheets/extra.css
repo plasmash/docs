@@ -102,6 +102,10 @@
 .md-tabs { background-color: #000; }
 .md-header__button.md-logo { display: inline-flex; align-items: center; }
 .md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.45rem; width: auto; }
+/* On very narrow phones (≤340px) shrink the wordmark so the header buttons fit */
+@media screen and (max-width: 340px) {
+  .md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.1rem; }
+}
 .md-header__title .md-header__topic:first-child .md-ellipsis { display: none; }
 
 /* ---- Links (landing style: colour only) --------------------------------- */
@@ -172,6 +176,7 @@
 }
 
 /* ---- Tables ------------------------------------------------------------- */
+/* (Wide tables scroll inside Material's .md-typeset__scrollwrap by default.) */
 .md-typeset table:not([class]) {
   border: 1px solid var(--plasma-border); border-radius: 6px; font-size: 0.74rem;
 }
