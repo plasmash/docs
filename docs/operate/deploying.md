@@ -13,6 +13,24 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
 3. **Bundle** — `plasmactl model:bundle` produces a deployable Platform Model (`.pm`) artifact.
 4. **Up** — `plasmactl platform:up <env> <target>` runs the full pipeline (bump → compose → prepare → deploy).
 
+## The full pipeline
+
+`platform:up` runs the common path for you, but each stage is a command you can run — and reason about — on its own:
+
+| Stage | Command | What it does |
+|---|---|---|
+| **Bump** | `component:bump` | detects changed components and pins each to the current commit as its version |
+| **Compose** | `model:compose` | fetches packages from `compose.yaml` and merges them into one model |
+| **Sync** | `component:sync` | propagates bumped versions out to every dependent component |
+| **Prepare** | `model:prepare` | transforms the composed model into an Ansible runtime |
+| **Bundle** | `model:bundle` | packages the result as a versioned Platform Model (`.pm`) artifact |
+| **Release** | `model:release` | tags a semver release with a conventional-commit changelog |
+| **Deploy** | `platform:deploy <env> <target>` | runs the Ansible deployment against a target |
+
+`platform:up` in local mode chains commit → bump → compose → prepare → sync → deploy. Two artifact types come out the far end: a **`.pm`** Platform Model (the deployable bundle) and, ahead on the roadmap, a **`.pi`** Platform Image (a bootable node image).
+
+→ For the step-by-step conceptual view, see [Platform lifecycle](lifecycle.md).
+
 ## Infrastructure
 
 - **Nodes** are provisioned and managed with [`plasmactl node`](../cli/node.md) across providers.

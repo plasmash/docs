@@ -18,7 +18,9 @@ It returns the complete picture — nodes, zone allocations, component distribut
 
 - [**Platform lifecycle**](lifecycle.md) — `compose → prepare → bundle → up`
 - [**Nodes & topology**](nodes.md) — node files, zones, allocation, `platform.yaml`
-- [**Deploying**](deploying.md) — zone targets, deploy times, the managed option
+- [**Deploying**](deploying.md) — zone targets, the full pipeline, the managed option
+- [**Security**](security.md) — identity, access, secrets, hardened images
+- [**Observability**](observability.md) — metrics, logs, traces, dashboards, alerting
 - [**Investigating a platform**](investigating.md) — `platform:graph`, `check`, `impact`
 - [**Debugging**](debugging.md) — deployment issues, agent flows, RBAC
 
