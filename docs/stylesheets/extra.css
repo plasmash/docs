@@ -1,69 +1,83 @@
 /* ============================================================================
-   Plasma docs — dark (default) and light, on-brand.
-   Body: Inter (readability). Headings / nav / code: JetBrains Mono (the brand).
-   Cyan accent (from the gradient) + the Plasma gradient (pink → violet → blue → teal).
-   The header stays dark in both schemes (so the wordmark logo always reads).
+   Plasma docs — same look & feel as the plasma.sh landing.
+   Pure #000 black · JetBrains Mono throughout · cyan accent (#22d3ee) ·
+   crisp #1a1a1a hairlines · #8b8b8b secondary text · #0d0d0d code.
+   White primary button + ghost secondary (verbatim from the landing).
+   The header stays black in both schemes so the wordmark always reads.
+   Light mode is a clean counterpart built from the same language.
    ============================================================================ */
 
 :root {
   --plasma-grad: linear-gradient(90deg, #FD6F8E 0%, #7A5AF8 33%, #1570EF 67%, #27FCE2 100%);
-  --plasma-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --md-accent-fg-color: #22d3ee;
+  --plasma-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --md-accent-fg-color: #67e8f9;
 }
 
-/* ---- Dark scheme (default) ---------------------------------------------- */
+/* ---- Dark scheme (default) — the landing's palette, verbatim ------------- */
 [data-md-color-scheme="slate"] {
   --md-hue: 240;
-  --md-default-bg-color: #060608;
-  --md-default-bg-color--light: #0d0d10;
-  --md-default-fg-color: #e6e6ea;
-  --md-default-fg-color--light: #b6b6bf;
-  --md-default-fg-color--lighter: #7e7e89;
-  --md-default-fg-color--lightest: #26262c;
-  --md-primary-fg-color: #060608;
-  --md-primary-bg-color: #e6e6ea;
+  --md-default-bg-color: #000000;
+  --md-default-bg-color--light: #0a0a0a;
+  --md-default-fg-color: #e4e4e7;
+  --md-default-fg-color--light: #b4b4ba;
+  --md-default-fg-color--lighter: #8b8b8b;
+  --md-default-fg-color--lightest: #242424;
+  --md-primary-fg-color: #000000;
+  --md-primary-bg-color: #e4e4e7;
   --md-accent-fg-color: #67e8f9;
   --md-typeset-a-color: #22d3ee;
-  --md-code-bg-color: #0e0e12;
-  --md-code-fg-color: #e6e6ea;
-  --md-footer-bg-color: #060608;
-  --md-footer-bg-color--dark: #000;
-  --plasma-border: #1d1d23;
-  --plasma-surface: #0c0c10;
-  --plasma-th-bg: #0d0d11;
-  --plasma-search-bg: #141418;
-  --plasma-scroll: #26262c;
+  --md-code-bg-color: #0d0d0d;
+  --md-code-fg-color: #e4e4e7;
+  --md-footer-bg-color: #000000;
+  --md-footer-bg-color--dark: #000000;
+  --plasma-border: #1a1a1a;
+  --plasma-surface: #0a0a0a;
+  --plasma-th-bg: #0a0a0a;
+  --plasma-search-bg: #141414;
+  --plasma-scroll: #222222;
   --plasma-h1: #f4f4f6;
+  /* landing code-syntax palette */
+  --plasma-hl-kw: #22d3ee;
+  --plasma-hl-fn: #7dd3fc;
+  --plasma-hl-str: #fbbf24;
+  --plasma-hl-cm: #7a7a7a;
+  --plasma-hl-num: #fbbf24;
 }
+/* Beat Material's per-primary slate link colour (higher specificity) so the
+   accent stays cyan — active nav, ToC, body links. */
+[data-md-color-scheme="slate"][data-md-color-primary] { --md-typeset-a-color: #22d3ee; }
 
-/* Win over Material's per-primary slate link colour (higher specificity) so the
-   accent stays cyan in dark mode — active nav, ToC, body links. */
-[data-md-color-scheme="slate"][data-md-color-primary] {
-  --md-typeset-a-color: #22d3ee;
-}
-
-/* ---- Light scheme -------------------------------------------------------- */
+/* ---- Light scheme — clean counterpart, same language -------------------- */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #060608;       /* header stays dark */
-  --md-primary-bg-color: #e6e6ea;
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: #1a1a1f;
+  --md-default-fg-color--light: #52525b;
+  --md-default-fg-color--lighter: #71717a;
+  --md-default-fg-color--lightest: #e6e6e9;
+  --md-primary-fg-color: #000000;       /* header stays dark */
+  --md-primary-bg-color: #e4e4e7;
   --md-accent-fg-color: #0e7490;
   --md-typeset-a-color: #0891b2;
-  --plasma-border: #e6e6ea;
+  --md-code-bg-color: #f6f6f7;
+  --plasma-border: #e6e6e9;
   --plasma-surface: #fafafa;
   --plasma-th-bg: #f5f5f6;
-  --plasma-search-bg: #1a1a1f;          /* sits in the dark header */
+  --plasma-search-bg: #141414;          /* sits in the dark header */
   --plasma-scroll: #cdcdd2;
   --plasma-h1: #0b0b0d;
+  --plasma-hl-kw: #0891b2;
+  --plasma-hl-fn: #1570ef;
+  --plasma-hl-str: #b45309;
+  --plasma-hl-cm: #a1a1aa;
+  --plasma-hl-num: #b45309;
 }
-[data-md-color-scheme="default"][data-md-color-primary] {
-  --md-typeset-a-color: #0891b2;
-}
+[data-md-color-scheme="default"][data-md-color-primary] { --md-typeset-a-color: #0891b2; }
 
-/* ---- Base reading rhythm ------------------------------------------------- */
-.md-typeset { font-size: 0.82rem; line-height: 1.72; }
-.md-typeset p, .md-typeset li { letter-spacing: 0.005em; }
+/* ---- Base reading rhythm (mono, like the landing) ----------------------- */
+.md-typeset { font-size: 0.78rem; line-height: 1.78; }
+.md-typeset p, .md-typeset li { letter-spacing: 0; }
 
-/* ---- Headings: JetBrains Mono ------------------------------------------- */
+/* ---- Headings ----------------------------------------------------------- */
 .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4,
 .md-header__topic, .md-nav__title { font-family: var(--plasma-mono); }
 .md-typeset h1 { font-weight: 700; letter-spacing: -0.02em; color: var(--plasma-h1); }
@@ -79,8 +93,8 @@
   background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 2px;
 }
 
-/* ---- Header (dark in both schemes) -------------------------------------- */
-.md-header { background-color: #000; border-bottom: 1px solid #1d1d23; box-shadow: none; }
+/* ---- Header (black in both schemes) ------------------------------------- */
+.md-header { background-color: #000; border-bottom: 1px solid #1a1a1a; box-shadow: none; }
 .md-header::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0;
   height: 2px; background: var(--plasma-grad);
@@ -90,28 +104,31 @@
 .md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.45rem; width: auto; }
 .md-header__title .md-header__topic:first-child .md-ellipsis { display: none; }
 
-/* ---- Links -------------------------------------------------------------- */
-.md-typeset a {
-  text-decoration: none; border-bottom: 1px solid transparent;
-  transition: color .15s, border-color .15s;
-}
-.md-typeset a:hover {
-  color: var(--md-accent-fg-color);
-  border-bottom-color: color-mix(in srgb, var(--md-accent-fg-color) 45%, transparent);
-}
+/* ---- Links (landing style: colour only) --------------------------------- */
+.md-typeset a { color: var(--md-typeset-a-color); text-decoration: none; transition: color .2s; }
+.md-typeset a:hover { color: var(--md-accent-fg-color); }
 
 /* ---- Code --------------------------------------------------------------- */
 .md-typeset code {
   font-family: var(--plasma-mono);
   border: 1px solid var(--plasma-border); border-radius: 4px;
-  padding: 0.1em 0.36em; font-size: 0.86em;
+  padding: 0.1em 0.36em; font-size: 0.88em;
 }
 .md-typeset pre > code { border: none; padding: 0; }
-.md-typeset pre { border-radius: 8px; }
+.md-typeset pre { border-radius: 6px; }
 .md-typeset .highlight > pre, .md-typeset > pre {
-  border: 1px solid var(--plasma-border); border-radius: 8px;
+  border: 1px solid var(--plasma-border); border-radius: 6px;
 }
-.md-typeset .highlight code { line-height: 1.6; }
+.md-typeset .highlight code { line-height: 1.7; }
+/* landing code-syntax colours */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kc, .highlight .kr,
+.highlight .kt, .highlight .ow, .highlight .nt { color: var(--plasma-hl-kw); }
+.highlight .nf, .highlight .fm, .highlight .nb, .highlight .nc { color: var(--plasma-hl-fn); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
+.highlight .sd, .highlight .se, .highlight .si { color: var(--plasma-hl-str); }
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cp,
+.highlight .cs { color: var(--plasma-hl-cm); font-style: normal; }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh { color: var(--plasma-hl-num); }
 
 /* ---- Navigation --------------------------------------------------------- */
 .md-nav { font-size: 0.72rem; }
@@ -120,43 +137,43 @@
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--md-default-fg-color--lighter);
 }
-.md-nav__link--active, .md-nav__link:focus, .md-nav__link:hover { color: var(--md-accent-fg-color); }
+.md-nav__link--active, .md-nav__link:focus, .md-nav__link:hover { color: var(--md-typeset-a-color); }
 .md-sidebar--primary .md-nav__link--active { position: relative; font-weight: 600; }
 .md-sidebar--primary .md-nav__link--active::before {
   content: ""; position: absolute; left: -0.85rem; top: 0.15em; bottom: 0.15em;
   width: 2px; border-radius: 2px; background: var(--plasma-grad);
 }
 .md-typeset .md-nav__link { font-family: inherit; }
-.md-nav--secondary .md-nav__link--active { color: var(--md-accent-fg-color); }
+.md-nav--secondary .md-nav__link--active { color: var(--md-typeset-a-color); }
 
 /* ---- Admonitions -------------------------------------------------------- */
 .md-typeset .admonition, .md-typeset details {
-  border: 1px solid var(--plasma-border); border-radius: 8px;
-  background: var(--plasma-surface); font-size: 0.78rem;
+  border: 1px solid var(--plasma-border); border-radius: 6px;
+  background: var(--plasma-surface); font-size: 0.76rem;
 }
-/* Informational admonitions use the brand accent; warnings/dangers keep their semantic colours */
+/* Informational admonitions use the accent; warnings/dangers keep semantic colours */
 .md-typeset .admonition.note, .md-typeset .admonition.info,
 .md-typeset .admonition.tip, .md-typeset .admonition.abstract,
 .md-typeset details.note, .md-typeset details.info,
 .md-typeset details.tip, .md-typeset details.abstract {
-  border-left: 3px solid var(--md-accent-fg-color);
+  border-left: 3px solid var(--md-typeset-a-color);
 }
 .md-typeset .note > .admonition-title, .md-typeset .info > .admonition-title,
 .md-typeset .tip > .admonition-title, .md-typeset .abstract > .admonition-title,
 .md-typeset .note > summary, .md-typeset .info > summary,
 .md-typeset .tip > summary, .md-typeset .abstract > summary {
-  background-color: color-mix(in srgb, var(--md-accent-fg-color) 12%, transparent);
+  background-color: color-mix(in srgb, var(--md-typeset-a-color) 12%, transparent);
 }
 .md-typeset .note > .admonition-title::before, .md-typeset .info > .admonition-title::before,
 .md-typeset .tip > .admonition-title::before, .md-typeset .abstract > .admonition-title::before,
 .md-typeset .note > summary::before, .md-typeset .info > summary::before,
 .md-typeset .tip > summary::before, .md-typeset .abstract > summary::before {
-  background-color: var(--md-accent-fg-color);
+  background-color: var(--md-typeset-a-color);
 }
 
 /* ---- Tables ------------------------------------------------------------- */
 .md-typeset table:not([class]) {
-  border: 1px solid var(--plasma-border); border-radius: 8px; font-size: 0.76rem;
+  border: 1px solid var(--plasma-border); border-radius: 6px; font-size: 0.74rem;
 }
 .md-typeset table:not([class]) th {
   background: var(--plasma-th-bg); font-family: var(--plasma-mono);
@@ -165,59 +182,61 @@
 .md-typeset table:not([class]) td { border-top: 1px solid var(--plasma-border); }
 
 /* ---- Search (in the dark header) ---------------------------------------- */
-.md-search__input { background-color: var(--plasma-search-bg); border-radius: 6px; color: #e6e6ea; }
-.md-search__input::placeholder { color: #8b8b93; }
+.md-search__input { background-color: var(--plasma-search-bg); border-radius: 6px; color: #e4e4e7; }
+.md-search__input::placeholder { color: #8b8b8b; }
 
 /* ---- Grid cards --------------------------------------------------------- */
 .md-typeset .grid.cards > ul > li, .md-typeset .grid > .card {
-  border: 1px solid var(--plasma-border); border-radius: 8px;
+  border: 1px solid var(--plasma-border); border-radius: 6px;
   background: var(--plasma-surface);
-  transition: border-color .2s, box-shadow .2s, transform .2s;
+  transition: border-color .2s, transform .2s;
 }
 .md-typeset .grid.cards > ul > li:hover, .md-typeset .grid > .card:hover {
   border-color: var(--md-typeset-a-color);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-typeset-a-color) 25%, transparent);
   transform: translateY(-2px);
 }
 
-/* ---- Buttons (CTAs) ----------------------------------------------------- */
-.md-typeset .md-button {
-  border-radius: 6px;
-  border-color: var(--md-typeset-a-color);
-  color: var(--md-typeset-a-color);
-  font-family: var(--plasma-mono);
-  font-size: 0.74rem;
-}
-.md-typeset .md-button:hover {
-  background-color: var(--md-typeset-a-color);
-  border-color: var(--md-typeset-a-color);
-  color: #042f33;
-}
+/* ---- Buttons (verbatim from the landing) -------------------------------- */
+/* primary = solid light fill, dark text, fades on hover */
 .md-typeset .md-button--primary {
-  background-color: var(--md-typeset-a-color);
-  border-color: var(--md-typeset-a-color);
-  color: #042f33;
+  background-color: var(--md-default-fg-color);
+  border: none;
+  color: var(--md-default-bg-color);
+  font-family: var(--plasma-mono); font-weight: 600; font-size: 0.74rem;
+  border-radius: 6px; transition: opacity .2s;
 }
 .md-typeset .md-button--primary:hover {
-  background-color: var(--md-accent-fg-color);
-  border-color: var(--md-accent-fg-color);
-  color: #042f33;
+  background-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color); opacity: 0.85;
+}
+/* secondary = ghost, hairline border, brightens on hover */
+.md-typeset .md-button {
+  background-color: transparent;
+  border: 1px solid var(--plasma-border);
+  color: var(--md-default-fg-color--lighter);
+  font-family: var(--plasma-mono); font-weight: 500; font-size: 0.74rem;
+  border-radius: 6px; transition: border-color .2s, color .2s;
+}
+.md-typeset .md-button:hover {
+  background-color: transparent;
+  border-color: var(--md-default-fg-color--lighter);
+  color: var(--md-default-fg-color);
 }
 
-/* ---- Header tabs: brand accent on active/hover -------------------------- */
+/* ---- Header tabs -------------------------------------------------------- */
 .md-tabs__link { opacity: 1; font-size: 0.74rem; }
 .md-tabs__link--active, .md-tabs__link:hover { color: var(--md-accent-fg-color); }
 
 /* ---- Tabbed code -------------------------------------------------------- */
 .md-typeset .tabbed-labels > label { font-family: var(--plasma-mono); font-size: 0.74rem; }
-.md-typeset .tabbed-set > input:checked + label { color: var(--md-accent-fg-color); }
+.md-typeset .tabbed-set > input:checked + label { color: var(--md-typeset-a-color); }
 
 /* ---- Scrollbar ---------------------------------------------------------- */
 * { scrollbar-width: thin; scrollbar-color: var(--plasma-scroll) transparent; }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
 *::-webkit-scrollbar-thumb { background: var(--plasma-scroll); border-radius: 6px; }
 
-/* ---- Mermaid diagrams: brand-teal node borders -------------------------- */
+/* ---- Mermaid diagrams --------------------------------------------------- */
 .md-typeset .mermaid .node rect,
 .md-typeset .mermaid .node circle,
 .md-typeset .mermaid .node polygon,
