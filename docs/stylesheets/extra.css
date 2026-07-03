@@ -1,6 +1,6 @@
 /* ============================================================================
    Plasma docs — same look & feel as the plasma.sh landing.
-   Pure #000 black · JetBrains Mono throughout · cyan accent (#22d3ee) ·
+   Pure #000 black · JetBrains Mono throughout · emerald accent (#10b981) ·
    crisp #1a1a1a hairlines · #8b8b8b secondary text · #0d0d0d code.
    White primary button + ghost secondary (verbatim from the landing).
    The header stays black in both schemes so the wordmark always reads.
@@ -10,7 +10,7 @@
 :root {
   --plasma-grad: linear-gradient(90deg, #FD6F8E 0%, #7A5AF8 33%, #1570EF 67%, #27FCE2 100%);
   --plasma-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --md-accent-fg-color: #67e8f9;
+  --md-accent-fg-color: #34d399;
 }
 
 /* ---- Dark scheme (default) — the landing's palette, verbatim ------------- */
@@ -24,8 +24,8 @@
   --md-default-fg-color--lightest: #242424;
   --md-primary-fg-color: #000000;
   --md-primary-bg-color: #e4e4e7;
-  --md-accent-fg-color: #67e8f9;
-  --md-typeset-a-color: #22d3ee;
+  --md-accent-fg-color: #34d399;
+  --md-typeset-a-color: #10b981;
   --md-code-bg-color: #0d0d0d;
   --md-code-fg-color: #e4e4e7;
   --md-footer-bg-color: #000000;
@@ -37,15 +37,15 @@
   --plasma-scroll: #222222;
   --plasma-h1: #f4f4f6;
   /* landing code-syntax palette */
-  --plasma-hl-kw: #22d3ee;
+  --plasma-hl-kw: #10b981;
   --plasma-hl-fn: #7dd3fc;
   --plasma-hl-str: #fbbf24;
   --plasma-hl-cm: #7a7a7a;
   --plasma-hl-num: #fbbf24;
 }
 /* Beat Material's per-primary slate link colour (higher specificity) so the
-   accent stays cyan — active nav, ToC, body links. */
-[data-md-color-scheme="slate"][data-md-color-primary] { --md-typeset-a-color: #22d3ee; }
+   accent stays emerald — active nav, ToC, body links. */
+[data-md-color-scheme="slate"][data-md-color-primary] { --md-typeset-a-color: #10b981; }
 
 /* ---- Light scheme — clean counterpart, same language -------------------- */
 [data-md-color-scheme="default"] {
@@ -56,8 +56,8 @@
   --md-default-fg-color--lightest: #e6e6e9;
   --md-primary-fg-color: #000000;       /* header stays dark */
   --md-primary-bg-color: #e4e4e7;
-  --md-accent-fg-color: #0e7490;
-  --md-typeset-a-color: #0891b2;
+  --md-accent-fg-color: #065f46;
+  --md-typeset-a-color: #047857;
   --md-code-bg-color: #f6f6f7;
   --plasma-border: #e6e6e9;
   --plasma-surface: #fafafa;
@@ -65,13 +65,13 @@
   --plasma-search-bg: #141414;          /* sits in the dark header */
   --plasma-scroll: #cdcdd2;
   --plasma-h1: #0b0b0d;
-  --plasma-hl-kw: #0891b2;
+  --plasma-hl-kw: #047857;
   --plasma-hl-fn: #1570ef;
   --plasma-hl-str: #b45309;
   --plasma-hl-cm: #a1a1aa;
   --plasma-hl-num: #b45309;
 }
-[data-md-color-scheme="default"][data-md-color-primary] { --md-typeset-a-color: #0891b2; }
+[data-md-color-scheme="default"][data-md-color-primary] { --md-typeset-a-color: #047857; }
 
 /* ---- Base reading rhythm (mono, like the landing) ----------------------- */
 .md-typeset { font-size: 0.78rem; line-height: 1.78; }
