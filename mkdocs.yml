@@ -47,6 +47,10 @@ nav:
       - Quickstart: quickstart.md
   - Tutorials:
       - Your first platform: tutorials/first-platform.md
+  - Examples:
+      - Overview: examples/index.md
+      - Ingest & react: examples/ingest-and-react.md
+      - Streaming analytics: examples/streaming-analytics.md
   - Concepts:
       - Overview: concepts/index.md
       - Architecture & layers: concepts/architecture.md
