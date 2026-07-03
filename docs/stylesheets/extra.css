@@ -1,13 +1,14 @@
 /* ============================================================================
    Plasma docs — dark (default) and light, on-brand.
    Body: Inter (readability). Headings / nav / code: JetBrains Mono (the brand).
-   Emerald accent + the Plasma gradient (pink → violet → blue → teal).
+   Cyan accent (from the gradient) + the Plasma gradient (pink → violet → blue → teal).
    The header stays dark in both schemes (so the wordmark logo always reads).
    ============================================================================ */
 
 :root {
   --plasma-grad: linear-gradient(90deg, #FD6F8E 0%, #7A5AF8 33%, #1570EF 67%, #27FCE2 100%);
   --plasma-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --md-accent-fg-color: #22d3ee;
 }
 
 /* ---- Dark scheme (default) ---------------------------------------------- */
@@ -21,8 +22,8 @@
   --md-default-fg-color--lightest: #26262c;
   --md-primary-fg-color: #060608;
   --md-primary-bg-color: #e6e6ea;
-  --md-accent-fg-color: #34d399;
-  --md-typeset-a-color: #10b981;
+  --md-accent-fg-color: #67e8f9;
+  --md-typeset-a-color: #22d3ee;
   --md-code-bg-color: #0e0e12;
   --md-code-fg-color: #e6e6ea;
   --md-footer-bg-color: #060608;
@@ -35,18 +36,27 @@
   --plasma-h1: #f4f4f6;
 }
 
+/* Win over Material's per-primary slate link colour (higher specificity) so the
+   accent stays cyan in dark mode — active nav, ToC, body links. */
+[data-md-color-scheme="slate"][data-md-color-primary] {
+  --md-typeset-a-color: #22d3ee;
+}
+
 /* ---- Light scheme -------------------------------------------------------- */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color: #060608;       /* header stays dark */
   --md-primary-bg-color: #e6e6ea;
-  --md-accent-fg-color: #059669;
-  --md-typeset-a-color: #059669;
+  --md-accent-fg-color: #0e7490;
+  --md-typeset-a-color: #0891b2;
   --plasma-border: #e6e6ea;
   --plasma-surface: #fafafa;
   --plasma-th-bg: #f5f5f6;
   --plasma-search-bg: #1a1a1f;          /* sits in the dark header */
   --plasma-scroll: #cdcdd2;
   --plasma-h1: #0b0b0d;
+}
+[data-md-color-scheme="default"][data-md-color-primary] {
+  --md-typeset-a-color: #0891b2;
 }
 
 /* ---- Base reading rhythm ------------------------------------------------- */
@@ -124,7 +134,25 @@
   border: 1px solid var(--plasma-border); border-radius: 8px;
   background: var(--plasma-surface); font-size: 0.78rem;
 }
-.md-typeset .admonition.note { border-left: 3px solid var(--md-accent-fg-color); }
+/* Informational admonitions use the brand accent; warnings/dangers keep their semantic colours */
+.md-typeset .admonition.note, .md-typeset .admonition.info,
+.md-typeset .admonition.tip, .md-typeset .admonition.abstract,
+.md-typeset details.note, .md-typeset details.info,
+.md-typeset details.tip, .md-typeset details.abstract {
+  border-left: 3px solid var(--md-accent-fg-color);
+}
+.md-typeset .note > .admonition-title, .md-typeset .info > .admonition-title,
+.md-typeset .tip > .admonition-title, .md-typeset .abstract > .admonition-title,
+.md-typeset .note > summary, .md-typeset .info > summary,
+.md-typeset .tip > summary, .md-typeset .abstract > summary {
+  background-color: color-mix(in srgb, var(--md-accent-fg-color) 12%, transparent);
+}
+.md-typeset .note > .admonition-title::before, .md-typeset .info > .admonition-title::before,
+.md-typeset .tip > .admonition-title::before, .md-typeset .abstract > .admonition-title::before,
+.md-typeset .note > summary::before, .md-typeset .info > summary::before,
+.md-typeset .tip > summary::before, .md-typeset .abstract > summary::before {
+  background-color: var(--md-accent-fg-color);
+}
 
 /* ---- Tables ------------------------------------------------------------- */
 .md-typeset table:not([class]) {
@@ -163,17 +191,17 @@
 .md-typeset .md-button:hover {
   background-color: var(--md-typeset-a-color);
   border-color: var(--md-typeset-a-color);
-  color: #042016;
+  color: #042f33;
 }
 .md-typeset .md-button--primary {
   background-color: var(--md-typeset-a-color);
   border-color: var(--md-typeset-a-color);
-  color: #042016;
+  color: #042f33;
 }
 .md-typeset .md-button--primary:hover {
   background-color: var(--md-accent-fg-color);
   border-color: var(--md-accent-fg-color);
-  color: #042016;
+  color: #042f33;
 }
 
 /* ---- Header tabs: brand accent on active/hover -------------------------- */
@@ -188,3 +216,13 @@
 * { scrollbar-width: thin; scrollbar-color: var(--plasma-scroll) transparent; }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
 *::-webkit-scrollbar-thumb { background: var(--plasma-scroll); border-radius: 6px; }
+
+/* ---- Mermaid diagrams: brand-teal node borders -------------------------- */
+.md-typeset .mermaid .node rect,
+.md-typeset .mermaid .node circle,
+.md-typeset .mermaid .node polygon,
+.md-typeset .mermaid .node path { stroke: var(--md-typeset-a-color) !important; }
+.md-typeset .mermaid .cluster rect { stroke: var(--plasma-border) !important; }
+.md-typeset .mermaid .edgePath .path,
+.md-typeset .mermaid marker path { stroke: var(--md-default-fg-color--lighter) !important; }
+.md-typeset .mermaid marker path { fill: var(--md-default-fg-color--lighter) !important; }
