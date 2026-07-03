@@ -2,6 +2,20 @@
 
 Plasma's architecture is organized into **eight specialized layers** — five in production today, three emerging (see the note below). Each has a dedicated purpose and its own message bus, and communicates through explicit relays — behavior emerges from channel topology, not a central coordinator.
 
+```mermaid
+flowchart TB
+  Cg["Cognition<br/><small>Kafka · data bus</small>"] <-->|relay| In
+  Cv["Conversation<br/><small>Matrix · utterance bus</small>"] <-->|relay| In
+  Ia["Interaction<br/><small>Grafana · APIs</small>"] <-->|relay| In
+  Vi["Vision<br/><small>emerging</small>"] -.->|relay| In
+  Au["Audition<br/><small>emerging</small>"] -.->|relay| In
+  In(["Integration · NATS<br/><small>the event backbone — ECST</small>"])
+  St["Stabilization<br/><small>emerging · watches all layers</small>"] -.->|observes| In
+  In --> Fd["Foundation<br/><small>Kubernetes · runs &amp; observes everything</small>"]
+```
+
+Every layer relays through **Integration** (the NATS event backbone), and every layer runs on **Foundation**. Solid arrows are in production; dotted are emerging.
+
 | | Layer | Purpose | Representative tech |
 |---|---|---|---|
 | **Fd** | **Foundation** | Infrastructure and observability — public cloud, private cloud, on-prem, air-gapped | Kubernetes, etcd, Ceph, Flannel |

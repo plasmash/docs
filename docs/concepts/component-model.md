@@ -11,6 +11,20 @@ Components compose along **two parallel patterns**, both following **HOW → WHA
 - **Event-driven logic:** **Function** (computation) → **Skill** (configuration) → **Agent** (orchestration)
 - **Infrastructure:** **Software** (computation) → **Service** (configuration) → **Application** (orchestration)
 
+```mermaid
+flowchart LR
+  subgraph EV["Event-driven logic"]
+    direction LR
+    F["Function<br/><small>HOW</small>"] --> S["Skill<br/><small>WHAT</small>"] --> A["Agent<br/><small>WHEN</small>"]
+  end
+  subgraph IF["Infrastructure"]
+    direction LR
+    SW["Software<br/><small>HOW</small>"] --> SV["Service<br/><small>WHAT</small>"] --> AP["Application<br/><small>WHEN</small>"]
+  end
+```
+
+The two triads are the same shape: a universal *how*, aimed by a *what*, run at the right *when*. An **agent** orchestrates skills exactly as an **application** orchestrates services.
+
 A **function** is a universal computation; a **skill** configures it for a specific use; an **agent** decides *when* it runs. An agent embeds its own trigger — an event subscription (reactive) or a schedule (proactive) — and holds a repertoire of skills, selecting one from the incoming situation. Just as an **application** orchestrates services from a manifest, an **agent** orchestrates skills from its configuration.
 
 Other component kinds include **entities** (data contracts), **libraries** (shared code), and **builders** (build logic).

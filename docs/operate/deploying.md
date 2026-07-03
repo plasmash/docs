@@ -17,6 +17,17 @@ compose.yaml → model:compose → model:prepare → model:bundle → platform:u
 
 `platform:up` runs the common path for you, but each stage is a command you can run — and reason about — on its own:
 
+```mermaid
+flowchart LR
+  B["component:bump<br/><small>version</small>"] --> C["model:compose<br/><small>merge packages</small>"]
+  C --> Y["component:sync<br/><small>propagate</small>"]
+  Y --> P["model:prepare<br/><small>ansible runtime</small>"]
+  P --> N["model:bundle<br/><small>.pm artifact</small>"]
+  N --> R["model:release<br/><small>semver tag</small>"]
+  N --> D["platform:deploy<br/><small>to target</small>"]
+```
+
+
 | Stage | Command | What it does |
 |---|---|---|
 | **Bump** | `component:bump` | detects changed components and pins each to the current commit as its version |

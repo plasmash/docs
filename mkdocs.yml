@@ -45,6 +45,8 @@ nav:
   - Get started:
       - Install: install.md
       - Quickstart: quickstart.md
+  - Tutorials:
+      - Your first platform: tutorials/first-platform.md
   - Concepts:
       - Overview: concepts/index.md
       - Architecture & layers: concepts/architecture.md
