@@ -246,6 +246,12 @@
 
 /* ---- Mobile: inset code blocks + stack tables as cards ------------------ */
 @media screen and (max-width: 44.9375em) {
+  /* CTA button pairs: equal-width, side by side, clean gap (no ragged wrap) */
+  .md-typeset p:has(> .md-button) { display: flex; flex-wrap: wrap; gap: 12px; }
+  .md-typeset p:has(> .md-button) > .md-button {
+    flex: 1 1 8em; text-align: center; margin: 0;
+  }
+
   /* Code blocks align with the body text instead of bleeding to the edges */
   .md-typeset > .highlight,
   .md-content__inner > .highlight,
