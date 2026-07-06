@@ -118,7 +118,7 @@
   border: 1px solid var(--plasma-border); border-radius: 4px;
   padding: 0.1em 0.36em; font-size: 0.88em;
 }
-.md-typeset pre > code { border: none; padding: 0; }
+.md-typeset pre > code { border: none; padding: 0.72rem 0.95rem; }
 .md-typeset pre { border-radius: 6px; }
 .md-typeset .highlight > pre, .md-typeset > pre {
   border: 1px solid var(--plasma-border); border-radius: 6px;
@@ -241,12 +241,51 @@
 *::-webkit-scrollbar { width: 10px; height: 10px; }
 *::-webkit-scrollbar-thumb { background: var(--plasma-scroll); border-radius: 6px; }
 
-/* ---- Mermaid diagrams --------------------------------------------------- */
-.md-typeset .mermaid .node rect,
-.md-typeset .mermaid .node circle,
-.md-typeset .mermaid .node polygon,
-.md-typeset .mermaid .node path { stroke: var(--md-typeset-a-color) !important; }
-.md-typeset .mermaid .cluster rect { stroke: var(--plasma-border) !important; }
-.md-typeset .mermaid .edgePath .path,
-.md-typeset .mermaid marker path { stroke: var(--md-default-fg-color--lighter) !important; }
-.md-typeset .mermaid marker path { fill: var(--md-default-fg-color--lighter) !important; }
+/* ---- Mermaid diagrams (colours themed in mermaid-init.js) --------------- */
+.md-typeset .mermaid { text-align: center; line-height: normal; }
+
+/* ---- Mobile: inset code blocks + stack tables as cards ------------------ */
+@media screen and (max-width: 44.9375em) {
+  /* Code blocks align with the body text instead of bleeding to the edges */
+  .md-typeset > .highlight,
+  .md-content__inner > .highlight,
+  .md-typeset > pre,
+  .md-content__inner > pre { margin-left: 0; margin-right: 0; }
+  .md-typeset > .highlight > pre, .md-typeset > pre { border-radius: 6px; }
+
+  /* Tables → stacked "label: value" cards (no horizontal scroll). Only tables
+     the JS has labelled (data-stackable) transform; others keep scrolling. */
+  .md-typeset__table:has(table[data-stackable]) { display: block; overflow-x: visible; }
+  .md-typeset__scrollwrap:has(table[data-stackable]) { overflow-x: visible; }
+  .md-typeset table[data-stackable] { display: block; border: 0; font-size: 0.8rem; }
+  .md-typeset table[data-stackable] thead { display: none; }
+  .md-typeset table[data-stackable] tbody { display: block; }
+  .md-typeset table[data-stackable] tr {
+    display: block;
+    border: 1px solid var(--plasma-border);
+    border-radius: 6px;
+    background: var(--plasma-surface);
+    padding: 2px 12px;
+    margin: 0 0 12px;
+  }
+  .md-typeset table[data-stackable] td {
+    display: block;
+    border: 0;
+    border-top: 1px solid var(--plasma-border);
+    padding: 9px 0;
+    text-align: left;
+    white-space: normal;
+  }
+  .md-typeset table[data-stackable] tr > td:first-child { border-top: 0; }
+  .md-typeset table[data-stackable] td[data-label]:not([data-label=""]) {
+    display: grid;
+    grid-template-columns: minmax(5.5em, 38%) 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .md-typeset table[data-stackable] td[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--md-default-fg-color--light);
+  }
+}

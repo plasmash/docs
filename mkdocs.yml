@@ -100,6 +100,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/mermaid-init.js
+  - javascripts/mobile-tables.js
 
 extra:
   generator: false
